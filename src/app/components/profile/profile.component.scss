@@ -1,0 +1,36 @@
+@import "styles";
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-light;
+}
+
+h1 {
+    margin-bottom: 10vh;
+    font-size: 2em;
+    color: $primary-color;
+    font-family: "Rajdhani", sans-serif;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    .form {
+        width: 100%;
+        margin-top: 5vh;
+    }
+
+    p.form-header {
+        color: $primary-color;
+        font-family: "Open sans", sans-serif;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+        margin-left: 10%;
+        text-align: left;
+        font-size: 1.3em;
+    }
+
+    .form-group {
+        width: 100%;
+        margin: 0px auto 3vh;
+    }
+}

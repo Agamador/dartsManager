@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 // variables
 $primary-color: #004643;
 $primary-color-light: #abd1c6;
@@ -35,7 +34,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     margin: 15px 0;
-    min-width: 70%;
+    min-width: 60%;
     font-size: 1.2em;
     box-shadow: 2px 5px 4px 0px rgba(0, 0, 0, 0.25);
     &:hover {
@@ -45,6 +44,49 @@ button {
     &:active {
         background-color: $tertiary-color;
     }
+}
+
+input {
+    font-size: 1em;
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+a.link {
+    margin-top: 1em;
+    font-size: 1em;
+    color: $button-text;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+        color: darken($tertiary-color, 10%);
+    }
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    font-size: 1.2em;
+    border-radius: 30px;
+}
+.icon:hover {
+    background-color: $secondary-color;
 }
 
 @media (min-width: 768px) {
@@ -60,5 +102,6 @@ button {
         padding: 1em;
         margin: 1em 0;
         font-size: 1.2em;
+        min-width: 50%;
     }
 }

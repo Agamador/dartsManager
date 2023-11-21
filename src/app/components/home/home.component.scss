@@ -7,19 +7,6 @@ body {
     background-color: $primary-color-light;
 }
 
-.container {
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-}
-
 h1 {
     margin-bottom: 10vh;
     font-size: 2em;
@@ -32,18 +19,6 @@ h1 {
     width: 25vh;
     height: auto;
     margin: 10vh 0 0;
-}
-
-a.register-link {
-    margin-top: 1em;
-    font-size: 1em;
-    color: $button-text;
-    text-decoration: underline;
-    cursor: pointer;
-
-    &:hover {
-        color: darken($tertiary-color, 10%);
-    }
 }
 
 @media (min-width: 768px) {

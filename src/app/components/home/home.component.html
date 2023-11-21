@@ -11,10 +11,11 @@
     <div class="container">
         <img src="assets/img/Diana.png" alt="DartsManager Logo" class="logo">
         <h1>DartsManager</h1>
-        <button>Iniciar sesión</button>
+        <button (click)="showModal = true">Iniciar sesión</button>
         <button>Jugar como invitado</button>
-        <a href="#register" class="register-link">Register</a>
+        <a href="/register" class="register-link">Register</a>
     </div>
+    <app-login *ngIf="showModal" (closeEvent)="showModal = false"></app-login>
 </body>
 
 </html>

@@ -1,18 +1,25 @@
 <div class="login-popup">
+    <a class="outer-fill" (click)="close()"></a>
     <div class="login-content">
-        <div class="header">
+        <div *ngIf="!guestMode" class="regular-header">
             <h2>Bienvenido</h2>
             <img class="icon" (click)="close()" src="assets/svg/close.svg" alt="close button">
-
+        </div>
+        <div *ngIf="guestMode" class="regular-header">
+            <a class="login-toggle" [ngClass]="{'active': useMail}" (click)="useMail = true">Iniciar sesión</a>
+            <a class="login-toggle" [ngClass]="{'active': !useMail}" (click)="useMail = false"
+                style="border-radius: 0 10px 0 0;">Invitado</a>
         </div>
         <form class="login-form">
             <div class="input-wrapper">
-                <input type="email" id="email" placeholder="email" required>
+                <input type="{{useMail? 'email': 'text'}}" id="email" placeholder="{{useMail? 'Email': 'Nombre'}}"
+                    required>
             </div>
             <div class="input-wrapper">
-                <input type="password" id="password" placeholder="contraseña" required>
+                <input type="password" id="password" placeholder="Contraseña" [ngClass]="{invisible: !useMail}"
+                    [attr.required]="useMail? 'required': null" [attr.disabled]="useMail? null: 'disabled'">
             </div>
-            <button type="submit" class="login-button">Iniciar sesión</button>
+            <button type="submit" class="login-button">{{useMail? 'Iniciar sesión': 'Unirme'}}</button>
         </form>
     </div>
 </div>

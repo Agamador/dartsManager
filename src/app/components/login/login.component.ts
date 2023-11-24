@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class LoginComponent {
   @Output() closeEvent = new EventEmitter<void>();
-
+  @Input() guestMode = false;
+  @Input() useMail = true;
   close() {
     this.closeEvent.emit();
   }

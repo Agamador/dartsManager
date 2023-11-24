@@ -15,7 +15,7 @@
         <button>Jugar como invitado</button>
         <a href="/register" class="register-link">Register</a>
     </div>
-    <app-login *ngIf="showModal" (closeEvent)="showModal = false"></app-login>
+    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false"></app-login>
 </body>
 
 </html>

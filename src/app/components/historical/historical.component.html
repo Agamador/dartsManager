@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DartsManager Home</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="section">
+            <button>Partida nueva</button>
+            <button class="small-button">
+                <img class="icon" src="/assets/svg/person.svg" alt="Perfil" />
+            </button>
+        </div>
+
+        <div class="section">
+            <input type="text" placeholder="Código de la sala">
+            <button class="small-button"> Unirse</button>
+        </div>
+
+        <select name="gameSelector" id="gameName">
+            <option value="301">301</option>
+            <option value="501">501</option>
+        </select>
+
+        <app-scoreboard></app-scoreboard>
+    </div>
+
+</body>
+
+</html>

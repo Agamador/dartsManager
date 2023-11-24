@@ -1,0 +1,46 @@
+@import "styles";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-light;
+}
+
+input {
+    max-width: 60%;
+    min-height: 50px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+}
+
+select {
+    min-width: 100%;
+    min-height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    margin: 30px;
+}
+
+.container {
+    justify-content: flex-start;
+}
+.section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.small-button {
+    min-width: 0;
+}
+
+@media (max-width: 500px) {
+    .join-game input {
+        width: 60%;
+    }
+}

@@ -1,0 +1,60 @@
+@import "styles";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-light;
+}
+img {
+    cursor: pointer;
+    height: 2.5em;
+}
+.container {
+    height: 90%;
+    justify-content: flex-start;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.dart-icon {
+    transform: rotate(225deg);
+}
+.turn {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.target {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+
+    button {
+        min-width: 30%;
+        padding: 5px;
+    }
+    .icon-button {
+        min-width: 15%;
+    }
+    img {
+        height: 1.2em;
+    }
+}

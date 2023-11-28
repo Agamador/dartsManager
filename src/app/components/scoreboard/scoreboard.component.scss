@@ -14,8 +14,13 @@
     background-color: $primary-color;
     color: $primary-color-light;
     border: 1px solid $primary-color-light;
-    max-height: 200px;
     max-width: 100%;
+}
+.tall {
+    max-height: 40vh;
+}
+.small {
+    max-height: 20vh;
 }
 table {
     border-collapse: collapse;
@@ -65,27 +70,27 @@ tr > :first-child {
         color: $button-text;
     }
 }
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: $primary-color-light;
+}
+::-webkit-scrollbar-thumb {
+    background: $button-color;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: $tertiary-color;
+}
+::-webkit-scrollbar-corner {
+    background: $primary-color-light;
+}
 @media (min-width: 768px) {
     td {
         min-width: 120px;
     }
     :host {
         max-width: 150%;
-    }
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        background: $primary-color-light;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: $button-color;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: $tertiary-color;
-    }
-    ::-webkit-scrollbar-corner {
-        background: $primary-color-light;
     }
 }

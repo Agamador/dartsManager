@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DartsManager Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img [routerLink]="['/history']" class="dart-icon" src="/assets/svg/dart.svg" alt="return">
+            <h2>Código sala: XXX</h2>
+            <img src="/assets/svg/share.svg" alt="Compartir partida">
+        </div>
+        <div class="turn">
+            <span class="player-name">Jugador 1</span>
+            <span class="score">Puntos: 103</span>
+        </div>
+        <img class="target" src="assets/img/Diana.png" alt="DartsManager Logo">
+        <span class="last-note">Ultima anotación: 100</span>
+        <div class="buttons">
+            <button class="icon-button"><img src="/assets/svg/undo.svg" alt=""></button>
+            <button>Fallo</button>
+            <button class="icon-button" [routerLink]="['/postgame']"><img src="/assets/svg/done.svg" alt=""></button>
+        </div>
+        <app-scoreboard></app-scoreboard>
+    </div>
+</body>
+
+</html>

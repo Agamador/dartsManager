@@ -1,0 +1,22 @@
+@import "styles";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-light;
+}
+.container {
+    height: 90%;
+    justify-content: flex-start;
+}
+h1 {
+    margin-bottom: 10vh;
+    font-size: 2em;
+    color: $primary-color;
+    font-family: "Rajdhani", sans-serif;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+}

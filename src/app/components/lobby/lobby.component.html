@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DartsManager Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img [routerLink]="['/history']" class="dart-icon" src="/assets/svg/dart.svg" alt="return">
+            <h2>Código sala: XXX</h2>
+            <img src="/assets/svg/share.svg" alt="Compartir partida">
+        </div>
+
+        <select name="gameSelector" id="gameName">
+            <option value="301">301</option>
+            <option value="501">501</option>
+        </select>
+
+        <div class="players">
+            <h2>Jugadores</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jugador 1
+                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jugador 2
+                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jugador 3
+                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><img (click)="showModal=true" src="/assets/svg/person_add.svg" alt="Añadir jugador"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button [routerLink]="['/game']">Comenzar partida</button>
+    </div>
+    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false"></app-login>
+</body>
+
+</html>

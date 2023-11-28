@@ -1,0 +1,78 @@
+@import "styles";
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-light;
+}
+img {
+    cursor: pointer;
+    height: 2.5em;
+}
+.container {
+    height: 90%;
+    justify-content: flex-start;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.players {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: auto;
+    h2 {
+        margin-left: 5px;
+        text-align: left;
+    }
+}
+.dart-icon {
+    transform: rotate(225deg);
+}
+table {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $primary-color;
+    border-radius: 10px;
+    color: $primary-color-light;
+    img {
+        filter: invert(84%) sepia(12%) saturate(414%) hue-rotate(112deg) brightness(93%) contrast(95%);
+        height: 1.2em;
+    }
+}
+
+td {
+    text-align: center;
+    padding: 5px 10px;
+    min-height: 40px;
+}
+tr {
+    border: 1px solid $primary-color-light;
+
+    td:first-child {
+        border-right: 1px solid $primary-color-light;
+        padding: 5px;
+    }
+    :nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+tr:last-child {
+    :nth-child(2) {
+        img {
+            margin: auto;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+}

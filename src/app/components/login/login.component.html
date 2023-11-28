@@ -1,7 +1,7 @@
 <div class="login-popup">
     <a class="outer-fill" (click)="close()"></a>
     <div class="login-content">
-        <div *ngIf="!guestMode" class="regular-header">
+        <div *ngIf="!guestMode" class="regular-header" style="padding: 10px;">
             <h2>Bienvenido</h2>
             <img class="icon" (click)="close()" src="assets/svg/close.svg" alt="close button">
         </div>
@@ -19,7 +19,8 @@
                 <input type="password" id="password" placeholder="Contraseña" [ngClass]="{invisible: !useMail}"
                     [attr.required]="useMail? 'required': null" [attr.disabled]="useMail? null: 'disabled'">
             </div>
-            <button type="submit" class="login-button">{{useMail? 'Iniciar sesión': 'Unirme'}}</button>
+            <button [routerLink]="['/history']" type="submit" class="login-button">{{useMail? 'Iniciar sesión':
+                'Unirme'}}</button>
         </form>
     </div>
 </div>

@@ -1,0 +1,35 @@
+@import "styles";
+
+:host {
+    width: 100%;
+}
+
+.player-name {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-width: 100px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    background: center/60% no-repeat url("/assets/svg/Pluma_dardo.svg");
+}
+
+@media (min-width: 768px) {
+    .stat {
+        height: 110px;
+    }
+}

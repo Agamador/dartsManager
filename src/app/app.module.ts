@@ -10,9 +10,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PrelobbyComponent } from './components/prelobby/prelobby.component';
 import { HistoricalComponent } from './components/historical/historical.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, ProfileComponent, PrelobbyComponent, HistoricalComponent, ScoreboardComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent, RegisterComponent, ProfileComponent, PrelobbyComponent, HistoricalComponent, ScoreboardComponent, StatsComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

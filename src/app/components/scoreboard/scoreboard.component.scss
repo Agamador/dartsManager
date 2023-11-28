@@ -1,4 +1,9 @@
 @import "styles";
+
+:host {
+    max-width: 100%;
+    margin-bottom: 5vh;
+}
 .wrapper {
     margin: auto;
 }
@@ -17,6 +22,7 @@ table {
     font-family: helvetica;
     caption-side: top;
     text-transform: capitalize;
+    cursor: pointer;
 }
 td,
 th {
@@ -63,7 +69,9 @@ tr > :first-child {
     td {
         min-width: 120px;
     }
-
+    :host {
+        max-width: 150%;
+    }
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;

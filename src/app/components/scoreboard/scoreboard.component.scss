@@ -1,18 +1,83 @@
-.scoreboard {
-    overflow-x: auto;
+@import "styles";
+.wrapper {
+    margin: auto;
+}
+.table-container {
+    position: relative;
+    overflow: scroll;
+    white-space: nowrap;
+    background-color: $primary-color;
+    color: $primary-color-light;
+    border: 1px solid $primary-color-light;
+    max-height: 200px;
+    max-width: 100%;
 }
 table {
-    width: 100%;
     border-collapse: collapse;
+    font-family: helvetica;
+    caption-side: top;
+    text-transform: capitalize;
 }
-
-th,
-td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 8px;
-}
-
+td,
 th {
-    background-color: #eee;
+    border: 1px solid $primary-color-light;
+    padding: 5px;
+    min-width: 120px;
+    background: $primary-color;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -2px;
+    z-index: 2;
+}
+
+thead th:first-child {
+    left: -3px;
+    z-index: 3;
+}
+
+tbody {
+    overflow: scroll;
+    height: 200px;
+}
+
+/* MAKE LEFT COLUMN FIXEZ */
+tr > :first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    border-right: 1px solid $primary-color-light;
+    left: -2px;
+}
+
+.active {
+    td {
+        background-color: $button-color;
+        color: $button-text;
+    }
+}
+@media (min-width: 768px) {
+    td {
+        min-width: 120px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: $primary-color-light;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $button-color;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: $tertiary-color;
+    }
+    ::-webkit-scrollbar-corner {
+        background: $primary-color-light;
+    }
 }

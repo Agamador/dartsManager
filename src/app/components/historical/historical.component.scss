@@ -22,6 +22,7 @@ select {
     font-size: 1.2em;
     border: 1px solid #ccc;
     margin: 30px;
+    cursor: pointer;
 }
 
 .container {
@@ -42,5 +43,11 @@ select {
 @media (max-width: 500px) {
     .join-game input {
         width: 60%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding-top: 10vh;
     }
 }

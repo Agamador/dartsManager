@@ -5,13 +5,14 @@ body {
     justify-content: center;
     align-items: center;
     background-color: $primary-color-light;
+    overflow-y: auto;
 }
 img {
     cursor: pointer;
     height: 2.5em;
 }
 .container {
-    height: 90%;
+    height: 100%;
     justify-content: flex-start;
 }
 

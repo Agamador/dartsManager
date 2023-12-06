@@ -10,11 +10,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <img [routerLink]="['/history']" class="dart-icon" src="/assets/svg/dart.svg" alt="return">
+            <button class="clean-button" [routerLink]="['/history']"><img class="dart-icon" src="/assets/svg/dart.svg"
+                    alt="return"></button>
             <h2>Código sala: {{roomId}}</h2>
-            <img src="/assets/svg/share.svg" alt="Compartir partida">
+            <button class="clean-button" [cdkCopyToClipboard]=shareUrl (click)="copiedTimer()"><img
+                    src="/assets/svg/share.svg" alt="Compartir partida"></button>
         </div>
-
+        <span *ngIf="copied">Link copiado al portapapeles</span>
         <select name="gameSelector" id="gameName">
             <option value="301">301</option>
             <option value="501">501</option>
@@ -69,8 +71,7 @@
                 </tbody>
             </table>
         </div>
-
-        <button [routerLink]="['/game']">Comenzar partida</button>
+        <button (click)="startGame()">Comenzar partida</button>
     </div>
     <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false"></app-login>
 </body>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from 'src/app/services/socket.service';
-
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
@@ -10,6 +9,10 @@ import { SocketService } from 'src/app/services/socket.service';
 export class LobbyComponent {
   showModal: boolean = false;
   roomId: string | null = null;
+  shareUrl: string = 'http://localhost:4200/lobby/';
+  copied: boolean = false;
+  userId: string | null = null;
+  userName: string | null = null;
   constructor(
     private route: ActivatedRoute,
     private socket: SocketService,
@@ -17,17 +20,45 @@ export class LobbyComponent {
   ) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
+    this.userName = localStorage.getItem('userName');
     this.roomId =
       this.route.snapshot.paramMap.get('id') || localStorage.getItem('roomId');
+
     if (!this.roomId) {
       this.roomId = this.generateId();
       localStorage.setItem('roomId', this.roomId);
     }
-    this.socket.emitEvent('joinRoom', { room: this.roomId });
+
+    this.shareUrl += this.roomId;
+
+    this.socket.emitEvent('joinRoom', {
+      room: this.roomId,
+      user: this.userName,
+    });
+
+    this.socket.onEvent('userJoined', (data: any) => {
+      console.log(data);
+      //add to table
+    });
+
+    this.socket.onEvent('gameStarted', (data: any) => {
+      console.log(data);
+      this.router.navigate(['/game', data]);
+    });
   }
 
-  newLobby() {}
+  startGame() {
+    this.socket.emitEvent('startGame', { room: this.roomId });
+  }
 
+  addPlayer() {
+    this.userName = 'Luiti2';
+    this.socket.emitEvent('addUserToLobby', {
+      room: this.roomId,
+      user: this.userName,
+    });
+  }
   generateId() {
     const caracteres = 'abcdefghijklmnopqrstuvwxyz';
     let id = '';
@@ -38,5 +69,11 @@ export class LobbyComponent {
     }
 
     return id;
+  }
+  copiedTimer() {
+    this.copied = true;
+    setTimeout(() => {
+      this.copied = false;
+    }, 3000);
   }
 }

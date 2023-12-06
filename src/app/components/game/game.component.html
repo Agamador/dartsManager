@@ -23,7 +23,7 @@
         <div class="buttons">
             <button class="icon-button"><img src="/assets/svg/undo.svg" alt=""></button>
             <button>Fallo</button>
-            <button class="icon-button" [routerLink]="['/postgame']"><img src="/assets/svg/done.svg" alt=""></button>
+            <button class="icon-button" (click)="addScore('T20')"><img src="/assets/svg/done.svg" alt=""></button>
         </div>
         <app-scoreboard></app-scoreboard>
     </div>

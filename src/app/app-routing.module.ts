@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'prelobby', component: PrelobbyComponent },
   { path: 'history', component: HistoricalComponent },
-  { path: 'lobby/:id', component: LobbyComponent },
+  { path: 'lobby/:id', component: PrelobbyComponent },
   { path: 'lobby', component: LobbyComponent },
   { path: 'game', component: GameComponent },
   { path: 'postgame', component: PostgameComponent },

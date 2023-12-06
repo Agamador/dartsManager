@@ -35,16 +35,17 @@ export class LobbyComponent {
     this.socket.emitEvent('joinRoom', {
       room: this.roomId,
       user: this.userName,
+      userId: this.userId,
     });
 
+    //TODO: Falta esto
     this.socket.onEvent('userJoined', (data: any) => {
       console.log(data);
       //add to table
     });
 
     this.socket.onEvent('gameStarted', (data: any) => {
-      console.log(data);
-      this.router.navigate(['/game', data]);
+      this.router.navigate(['/game'], { state: { data } });
     });
   }
 
@@ -52,11 +53,13 @@ export class LobbyComponent {
     this.socket.emitEvent('startGame', { room: this.roomId });
   }
 
+  //TODO: revisa esto
   addPlayer() {
     this.userName = 'Luiti2';
     this.socket.emitEvent('addUserToLobby', {
       room: this.roomId,
       user: this.userName,
+      userId: this.userId,
     });
   }
   generateId() {

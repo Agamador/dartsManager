@@ -11,27 +11,40 @@
 
     <div class="container">
         <h1>DartsManager</h1>
-        <form class="registro-form">
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
             <p class="form-header">Formulario de registro</p>
             <div class="form-group">
-                <input type="text" id="nombre" placeholder="nombre" required>
+                <input type="text" formControlName="name" placeholder="nombre" required>
+                <p *ngIf="registroForm.get('name')?.hasError('pattern')" class="error-message">Nombre debe contener
+                    solo letras.</p>
             </div>
             <div class="form-group">
-                <input type="text" id="apellidos" placeholder="apellidos" required>
+                <input type="text" formControlName="surname" placeholder="apellidos" required>
+                <p *ngIf="registroForm.get('surname')?.hasError('pattern')" class="error-message">Apellidos deben
+                    contener solo letras.</p>
             </div>
             <div class="form-group">
-                <input type="email" id="email" placeholder="email" required>
+                <input type="email" formControlName="email" placeholder="email" required>
+                <p *ngIf="registroForm.get('email')?.hasError('email')" class="error-message">Email no es válido.
+                </p>
             </div>
             <div class="form-group">
-                <input type="password" id="contrasena" placeholder="contraseña" required>
+                <input type="password" formControlName="password" placeholder="contraseña" required>
+                <p *ngIf="registroForm.get('password')?.hasError('minlength')" class="error-message">Contraseña debe
+                    tener al menos 8 caracteres.</p>
             </div>
             <div class="form-group">
-                <input type="password" id="repetir-contrasena" placeholder="repetir contraseña" required>
+                <input type="password" formControlName="repeatPassword" placeholder="repetir contraseña" required>
+                <p *ngIf="registroForm.get('password')?.value !== registroForm.get('repeatPassword')?.value"
+                    class="error-message">Las contraseñas no coinciden.</p>
             </div>
-            <button type="submit" class="btn-crear">Crear cuenta</button>
+            <button type="submit" class="btn-crear"
+                [disabled]="!registroForm.valid || registroForm.get('password')?.value !== registroForm.get('repeatPassword')?.value">Crear
+                cuenta</button>
         </form>
         <a href="/home" class="link">Ir a inicio</a>
     </div>
+
 
 </body>
 

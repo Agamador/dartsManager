@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameComponent } from './components/game/game.component';
@@ -32,7 +34,14 @@ import { SocketService } from './services/socket.service';
     GameComponent,
     PostgameComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ClipboardModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ClipboardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [SocketService],
   bootstrap: [AppComponent],
 })

@@ -16,7 +16,7 @@ h1 {
 }
 
 .container {
-    .registro-form {
+    form {
         width: 100%;
         margin-top: 5vh;
     }
@@ -29,10 +29,21 @@ h1 {
         text-align: left;
         font-size: 1.3em;
     }
-
+    .error-message {
+        color: red;
+        font-size: 0.8em;
+        margin-left: 10%;
+        text-align: left;
+    }
     .form-group {
         width: 100%;
         margin: 0px auto 3vh;
+    }
+    button:disabled,
+    button[disabled] {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
     }
 }
 

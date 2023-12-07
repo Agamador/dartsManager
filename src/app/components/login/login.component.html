@@ -6,21 +6,24 @@
             <img class="icon" (click)="close()" src="assets/svg/close.svg" alt="close button">
         </div>
         <div *ngIf="guestMode" class="regular-header">
-            <a class="login-toggle" [ngClass]="{'active': useMail}" (click)="useMail = true">Iniciar sesión</a>
-            <a class="login-toggle" [ngClass]="{'active': !useMail}" (click)="useMail = false"
+            <a class="login-toggle" [ngClass]="{'active': useMail}" (click)="toggleUseMail()">Iniciar sesión</a>
+            <a class="login-toggle" [ngClass]="{'active': !useMail}" (click)="toggleUseMail()"
                 style="border-radius: 0 10px 0 0;">Invitado</a>
         </div>
-        <form class="login-form">
+        <p *ngIf="showError" class="error-message">Credenciales inválidos</p>
+        <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
             <div class="input-wrapper">
-                <input type="{{useMail? 'email': 'text'}}" id="email" placeholder="{{useMail? 'Email': 'Nombre'}}"
-                    required>
+                <input type="{{useMail ? 'email' : 'text'}}" id="email" autocomplete="on"
+                    placeholder="{{useMail ? 'Email' : 'Nombre'}}" formControlName="inputField" required />
             </div>
             <div class="input-wrapper">
-                <input type="password" id="password" placeholder="Contraseña" [ngClass]="{invisible: !useMail}"
-                    [attr.required]="useMail? 'required': null" [attr.disabled]="useMail? null: 'disabled'">
+                <input type="password" id="password" placeholder="Contraseña" formControlName="password"
+                    [ngClass]="{ invisible: !useMail }" [attr.required]="useMail ? 'required' : null"
+                    [attr.disabled]="useMail ? null : 'disabled'" />
             </div>
-            <button [routerLink]="['/history']" type="submit" class="login-button">{{useMail? 'Iniciar sesión':
-                'Unirme'}}</button>
+            <button type="submit" class="login-button" [disabled]="!loginForm.valid">
+                {{ useMail ? 'Iniciar sesión' : 'Unirme' }}
+            </button>
         </form>
     </div>
 </div>

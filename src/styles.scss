@@ -42,7 +42,18 @@ button {
         background-color: $tertiary-color;
     }
 }
-
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-left: 10%;
+    text-align: left;
+}
 input {
     font-size: 1em;
     width: 80%;

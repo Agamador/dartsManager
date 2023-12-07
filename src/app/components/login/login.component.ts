@@ -12,6 +12,8 @@ export class LoginComponent {
   @Output() closeEvent = new EventEmitter<void>();
   @Input() guestMode = false;
   @Input() useMail = true;
+  @Input() preLobby = false;
+
   loginForm: FormGroup = new FormGroup({});
   showError = false;
   constructor(
@@ -30,18 +32,22 @@ export class LoginComponent {
   toggleUseMail() {
     this.useMail = !this.useMail;
     const inputField = this.loginForm.get('inputField');
+    const passwordField = this.loginForm.get('password');
     if (this.useMail) {
       inputField?.setValidators([Validators.required, Validators.email]);
     } else {
-      inputField?.setValidators([Validators.required]);
+      inputField?.setValidators([Validators.required, Validators.minLength(3)]);
+      passwordField?.setValidators([]);
     }
     inputField?.updateValueAndValidity();
+    passwordField?.updateValueAndValidity();
   }
+
   onSubmit() {
     if (this.useMail) this.mailLogin();
     else {
       localStorage.setItem('userName', this.loginForm.get('inputField')?.value);
-      localStorage.setItem('userId', 'guest');
+      this.router.navigate(['/lobby']);
     }
   }
   close() {
@@ -64,7 +70,8 @@ export class LoginComponent {
           localStorage.setItem('token', v.token);
           localStorage.setItem('userId', v.user.id);
           localStorage.setItem('userName', v.user.name);
-          this.router.navigate(['/history']);
+          if (this.preLobby) this.router.navigate(['/lobby']);
+          else this.router.navigate(['/history']);
         },
         error: (e) => {
           if (e.error.message == 'Invalid credentials') {

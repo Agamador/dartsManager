@@ -11,11 +11,11 @@
     <div class="container">
         <img src="assets/img/Diana.png" alt="DartsManager Logo" class="logo">
         <h1>DartsManager</h1>
-        <h3>Código sala: XXX</h3>
-        <button (click)="showModal = true">Jugar</button>
+        <h3>Código sala: {{roomCode}}</h3>
+        <button (click)="joinRoom()">Jugar</button>
         <button>Espectar partida</button>
     </div>
-    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false"></app-login>
+    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [preLobby]="true"></app-login>
 </body>
 
 </html>

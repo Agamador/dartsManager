@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-prelobby',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class PrelobbyComponent {
   showModal: boolean = false;
+  roomCode: string = 'XXX';
+  constructor(private route: ActivatedRoute, private router: Router) {}
+  ngOnInit() {
+    this.roomCode = this.route.snapshot.paramMap.get('id') || 'XXX';
+    localStorage.setItem('roomId', this.roomCode);
+  }
+
+  joinRoom() {
+    if (localStorage.getItem('token')) {
+      console.log('joining room');
+      this.router.navigate(['/lobby']);
+    } else {
+      this.showModal = true;
+    }
+  }
 }

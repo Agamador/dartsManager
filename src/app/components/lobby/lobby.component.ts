@@ -20,10 +20,7 @@ export class LobbyComponent {
   ) {}
 
   ngOnInit() {
-    this.userId = localStorage.getItem('userId');
-    this.userName = localStorage.getItem('userName');
-    this.roomId =
-      this.route.snapshot.paramMap.get('id') || localStorage.getItem('roomId');
+    this.roomId = localStorage.getItem('roomId');
 
     if (!this.roomId) {
       this.roomId = this.generateId();
@@ -32,11 +29,18 @@ export class LobbyComponent {
 
     this.shareUrl += this.roomId;
 
+    this.userId = localStorage.getItem('userId');
+    this.userName = localStorage.getItem('userName');
+
+    console.log(this.userId, this.userName);
+
+    //FIXME: Evitar repetir socket en la sala al unir jugadores
     this.socket.emitEvent('joinRoom', {
       room: this.roomId,
       user: this.userName,
       userId: this.userId,
     });
+    //TODO: Si el nombre de usuario está presente, añadirlo a la tabla
 
     //TODO: Falta esto
     this.socket.onEvent('userJoined', (data: any) => {

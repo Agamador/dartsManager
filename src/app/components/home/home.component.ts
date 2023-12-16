@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   showModal: boolean = false;
+  guestMode: boolean = false;
+  useMail: boolean = true;
   constructor(private router: Router) {}
   ngOnInit(): void {
-    if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
       this.router.navigate(['/history']);
     }
   }

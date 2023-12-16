@@ -15,7 +15,8 @@
         <button (click)="joinRoom()">Jugar</button>
         <button>Espectar partida</button>
     </div>
-    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [preLobby]="true"></app-login>
+    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'prelobby'"
+        [useMail]="true"></app-login>
 </body>
 
 </html>

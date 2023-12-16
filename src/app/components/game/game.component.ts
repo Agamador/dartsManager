@@ -25,8 +25,8 @@ export class GameComponent {
   }
 
   ngOnInit() {
-    this.userId = localStorage.getItem('userId');
-    this.userName = localStorage.getItem('userName');
+    this.userId = sessionStorage.getItem('userId');
+    this.userName = sessionStorage.getItem('userName');
     this.roomId = this.initialData.roomId;
     console.log(this.roomId);
     this.socket.onEvent('scoreSubmitted', (data: any) => {

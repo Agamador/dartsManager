@@ -12,11 +12,11 @@ export class PrelobbyComponent {
   constructor(private route: ActivatedRoute, private router: Router) {}
   ngOnInit() {
     this.roomCode = this.route.snapshot.paramMap.get('id') || 'XXX';
-    localStorage.setItem('roomId', this.roomCode);
+    sessionStorage.setItem('roomId', this.roomCode);
   }
 
   joinRoom() {
-    if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
       console.log('joining room');
       this.router.navigate(['/lobby']);
     } else {

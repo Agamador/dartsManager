@@ -38,9 +38,9 @@ export class RegisterComponent {
         })
         .subscribe({
           next: (v: any) => {
-            localStorage.setItem('token', v.token);
-            localStorage.setItem('userId', v.user.id);
-            localStorage.setItem('userName', v.user.name);
+            sessionStorage.setItem('token', v.token);
+            sessionStorage.setItem('userId', v.user.id);
+            sessionStorage.setItem('userName', v.user.name);
             this.router.navigate(['/history']);
           },
           error: (e) => {

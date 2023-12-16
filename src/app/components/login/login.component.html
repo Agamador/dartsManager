@@ -6,8 +6,8 @@
             <img class="icon" (click)="close()" src="assets/svg/close.svg" alt="close button">
         </div>
         <div *ngIf="guestMode" class="regular-header">
-            <a class="login-toggle" [ngClass]="{'active': useMail}" (click)="toggleUseMail()">Iniciar sesión</a>
-            <a class="login-toggle" [ngClass]="{'active': !useMail}" (click)="toggleUseMail()"
+            <a class="login-toggle" [ngClass]="{'active': useMail}" (click)="toggleUseMail(); ">Iniciar sesión</a>
+            <a class="login-toggle" [ngClass]="{'active': !useMail}" (click)="toggleUseMail();"
                 style="border-radius: 0 10px 0 0;">Invitado</a>
         </div>
         <p *ngIf="showError" class="error-message">Credenciales inválidos</p>
@@ -22,7 +22,7 @@
                     [attr.disabled]="useMail ? null : 'disabled'" />
             </div>
             <button type="submit" class="login-button" [disabled]="!loginForm.valid">
-                {{ useMail ? 'Iniciar sesión' : 'Unirme' }}
+                {{ useMail ? 'Iniciar sesión' : 'Entrar' }}
             </button>
         </form>
     </div>

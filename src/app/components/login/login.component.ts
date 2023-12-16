@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +11,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   @Output() closeEvent = new EventEmitter<void>();
+  @Output() addPlayerEvent = new EventEmitter<any>();
   @Input() guestMode = false;
   @Input() useMail = true;
-  @Input() preLobby = false;
+  @Input() phase = '';
 
   loginForm: FormGroup = new FormGroup({});
   showError = false;
+
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
@@ -24,9 +27,19 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      inputField: ['', Validators.required], // Nombre o Email
+      inputField: ['', [Validators.required, Validators.email]], // Nombre o Email
       password: ['', Validators.required],
     });
+
+    if (!this.guestMode && !this.useMail) {
+      const inputField = this.loginForm.get('inputField');
+      const passwordField = this.loginForm.get('password');
+      inputField?.setValidators([Validators.required, Validators.minLength(3)]);
+      passwordField?.setValidators([]);
+
+      inputField?.updateValueAndValidity();
+      passwordField?.updateValueAndValidity();
+    }
   }
 
   toggleUseMail() {
@@ -35,6 +48,7 @@ export class LoginComponent {
     const passwordField = this.loginForm.get('password');
     if (this.useMail) {
       inputField?.setValidators([Validators.required, Validators.email]);
+      passwordField?.setValidators([Validators.required]);
     } else {
       inputField?.setValidators([Validators.required, Validators.minLength(3)]);
       passwordField?.setValidators([]);
@@ -44,43 +58,85 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.useMail) this.mailLogin();
-    else {
-      localStorage.setItem('userName', this.loginForm.get('inputField')?.value);
+    if (this.phase == 'lobby') this.lobbySubmit();
+    else this.homeSubmit();
+  }
+  async homeSubmit() {
+    if (this.useMail) {
+      const data = await this.mailLogin();
+      if (!data.error) {
+        sessionStorage.setItem('userId', data.user.id!);
+        sessionStorage.setItem('userName', data.user.name);
+        sessionStorage.setItem('token', data.token!);
+        this.router.navigate([this.phase == 'home' ? '/history' : '/lobby']);
+      }
+    } else {
+      sessionStorage.setItem(
+        'userName',
+        this.loginForm.get('inputField')?.value
+      );
       this.router.navigate(['/lobby']);
     }
   }
-  close() {
-    this.closeEvent.emit();
+
+  async lobbySubmit() {
+    let player = { user: '', userId: null };
+    if (this.useMail) {
+      const data = await this.mailLogin();
+      if (!data.error) {
+        player.user = data.user.name;
+        player.userId = data.user.id;
+      }
+    } else {
+      player.user = this.loginForm.get('inputField')?.value;
+    }
+    this.addPlayerEvent.emit({
+      userName: player.user,
+      userId: player.userId,
+    });
+    this.close();
   }
 
-  mailLogin() {
+  async prelobbySubmit() {
+    if (this.useMail) {
+      const data = await this.mailLogin();
+      if (!data.error) {
+        //add data to players table and send
+        this.close();
+      }
+    } else {
+      let playerName = this.loginForm.get('inputField')?.value;
+      this.router.navigate(['/lobby', { playerName }]);
+    }
+  }
+  async mailLogin() {
     const body = JSON.stringify({
       user: {
         email: this.loginForm.get('inputField')?.value,
         password: this.loginForm.get('password')?.value,
       },
     });
-    this.http
-      .post('http://localhost:3000/api/users/login', body, {
-        headers: { 'Content-Type': 'application/json' },
-      })
-      .subscribe({
-        next: (v: any) => {
-          localStorage.setItem('token', v.token);
-          localStorage.setItem('userId', v.user.id);
-          localStorage.setItem('userName', v.user.name);
-          if (this.preLobby) this.router.navigate(['/lobby']);
-          else this.router.navigate(['/history']);
-        },
-        error: (e) => {
-          if (e.error.message == 'Invalid credentials') {
-            this.showError = true;
-            setTimeout(() => {
-              this.showError = false;
-            }, 5000);
-          }
-        },
-      });
+    let data: any = {};
+    try {
+      data = await firstValueFrom<any>(
+        this.http.post('http://localhost:3000/api/users/login', body, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+      console.log(data);
+    } catch (e: any) {
+      if (e.error.message == 'Invalid credentials') {
+        this.showError = true;
+        setTimeout(() => {
+          this.showError = false;
+        }, 5000);
+      }
+      data.error = true;
+    }
+    return data;
+  }
+
+  close() {
+    this.closeEvent.emit();
   }
 }

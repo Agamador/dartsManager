@@ -13,6 +13,10 @@ export class LobbyComponent {
   copied: boolean = false;
   userId: string | null = null;
   userName: string | null = null;
+  guestMode: boolean = false;
+  backRoute: string = this.guestMode ? '/history' : '/home';
+  players: string[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private socket: SocketService,
@@ -20,32 +24,26 @@ export class LobbyComponent {
   ) {}
 
   ngOnInit() {
-    this.roomId = localStorage.getItem('roomId');
+    this.roomId = sessionStorage.getItem('roomId');
 
     if (!this.roomId) {
       this.roomId = this.generateId();
-      localStorage.setItem('roomId', this.roomId);
+      sessionStorage.setItem('roomId', this.roomId);
     }
 
     this.shareUrl += this.roomId;
 
-    this.userId = localStorage.getItem('userId');
-    this.userName = localStorage.getItem('userName');
+    this.userId = sessionStorage.getItem('userId');
+    this.userName = sessionStorage.getItem('userName');
+    if (!this.userId) {
+      this.guestMode = true;
+    }
+    if (this.userName) {
+      this.addPlayer({ userName: this.userName, userId: this.userId });
+    }
 
-    console.log(this.userId, this.userName);
-
-    //FIXME: Evitar repetir socket en la sala al unir jugadores
-    this.socket.emitEvent('joinRoom', {
-      room: this.roomId,
-      user: this.userName,
-      userId: this.userId,
-    });
-    //TODO: Si el nombre de usuario está presente, añadirlo a la tabla
-
-    //TODO: Falta esto
     this.socket.onEvent('userJoined', (data: any) => {
-      console.log(data);
-      //add to table
+      if (data.scores) this.players = Object.keys(data.scores);
     });
 
     this.socket.onEvent('gameStarted', (data: any) => {
@@ -57,15 +55,29 @@ export class LobbyComponent {
     this.socket.emitEvent('startGame', { room: this.roomId });
   }
 
-  //TODO: revisa esto
-  addPlayer() {
-    this.userName = 'Luiti2';
-    this.socket.emitEvent('addUserToLobby', {
+  addPlayer(player: any) {
+    this.socket.emitEvent('joinRoom', {
       room: this.roomId,
-      user: this.userName,
-      userId: this.userId,
+      user: player.userName,
+      userId: player.userId,
     });
+    this.players.push(player.userName);
   }
+
+  getOut() {
+    this.removePlayer(this.userName!);
+    sessionStorage.removeItem('roomId');
+    this.router.navigate([this.backRoute]);
+  }
+
+  removePlayer(playerName: string) {
+    this.socket.emitEvent('leaveRoom', {
+      room: this.roomId,
+      userName: playerName,
+    });
+    this.players = this.players.filter((player) => player !== playerName);
+  }
+
   generateId() {
     const caracteres = 'abcdefghijklmnopqrstuvwxyz';
     let id = '';

@@ -24,52 +24,8 @@
 
         <div class="players">
             <h2>Jugadores</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Jugador 1
-                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jugador 2
-                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Jugador 3
-                            <img src="/assets/svg/delete.svg" alt="Eliminar jugador">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><img (click)="showModal=true" src="/assets/svg/person_add.svg" alt="Añadir jugador"></td>
-                    </tr>
-                </tbody>
-            </table>
+            <app-players-table-row class="table" [players]="players"></app-players-table-row>
+
         </div>
         {{players}}
         <button (click)="startGame()">Comenzar partida</button>

@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SocketService } from './services/socket.service';
+import { PlayersTableRowComponent } from './components/players-table-row/players-table-row.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SocketService } from './services/socket.service';
     LobbyComponent,
     GameComponent,
     PostgameComponent,
+    PlayersTableRowComponent,
   ],
   imports: [
     BrowserModule,

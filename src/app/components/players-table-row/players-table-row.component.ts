@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-players-table-row',
@@ -18,7 +18,7 @@ import { Component, Input, Output } from '@angular/core';
       <td class="num-col"></td>
       <td>
         <img
-          (click)="showModal = true"
+          (click)="emitShowModalEvent()"
           src="/assets/svg/person_add.svg"
           alt="Añadir jugador"
         />
@@ -30,11 +30,15 @@ import { Component, Input, Output } from '@angular/core';
 export class PlayersTableRowComponent {
   @Input() players!: any[];
   @Input() i!: number;
-  @Output() showModal!: boolean;
+  @Output() openEvent = new EventEmitter<boolean>();
 
   ngOnChanges() {
     while (this.players.length < 8) {
       this.players.push('');
     }
+  }
+
+  emitShowModalEvent() {
+    this.openEvent.emit(true);
   }
 }

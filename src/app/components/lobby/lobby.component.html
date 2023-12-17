@@ -24,10 +24,10 @@
 
         <div class="players">
             <h2>Jugadores</h2>
-            <app-players-table-row class="table" [players]="players"></app-players-table-row>
+            <app-players-table-row class="table" [players]="players"
+                (openEvent)="showModal = true"></app-players-table-row>
 
         </div>
-        {{players}}
         <button (click)="startGame()">Comenzar partida</button>
     </div>
     <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'lobby'"

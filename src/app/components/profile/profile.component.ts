@@ -49,6 +49,7 @@ export class ProfileComponent {
         });
     }
   }
+
   logout() {
     sessionStorage.clear();
     this.router.navigate(['/home']);

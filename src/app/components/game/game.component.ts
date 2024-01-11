@@ -18,17 +18,13 @@ export class GameComponent {
   constructor(private router: Router, private socket: SocketService) {
     const navigation = this.router.getCurrentNavigation();
     this.initialData = navigation?.extras.state!['data'];
-    console.log(
-      '🚀 ~ file: game.component.ts:21 ~ GameComponent ~ constructor ~ initialData:',
-      this.initialData
-    );
   }
 
   ngOnInit() {
     this.userId = sessionStorage.getItem('userId');
     this.userName = sessionStorage.getItem('userName');
     this.roomId = this.initialData.roomId;
-    console.log(this.roomId);
+    console.log(this.initialData);
     this.socket.onEvent('scoreSubmitted', (data: any) => {
       //TODO:
       //actualizar tabla y actual player, si el player es el actual, permitir sumar puntos, si no no, tienes el ID para eso

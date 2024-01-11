@@ -27,9 +27,8 @@ export class ProfileComponent {
     const apiUrl = 'http://localhost:3000/api/users/profile';
 
     if (userToken) {
-      const body = JSON.stringify({ userToken });
       this.http
-        .post(apiUrl, body, {
+        .get(apiUrl, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + userToken,

@@ -8,16 +8,22 @@ import { Component, Input } from '@angular/core';
 export class ScoreboardComponent {
   @Input() isTall = false;
   @Input() tableData: any = null;
+  @Input() updateEvent: any = null;
 
   nScores: number = 0;
   players: string[] = [];
   ngOnInit() {
+    this.updateTable();
+  }
+  updateTable() {
     this.nScores = Math.max(
       ...Object.keys(this.tableData).map((playerName: any) => {
-        console.log(playerName);
         return this.tableData[playerName].score.length;
       })
     );
     this.players = Object.keys(this.tableData);
+  }
+  ngOnChanges() {
+    this.updateTable();
   }
 }

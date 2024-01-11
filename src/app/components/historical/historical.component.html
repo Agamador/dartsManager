@@ -10,12 +10,10 @@
         <input type="text" placeholder="Código de la sala">
         <button class="small-button"> Unirse</button>
     </div>
-    <select name="gameSelector" id="gameName">
-        <option value="301">301</option>
-        <option value="501">501</option>
+    <select name="gameSelector" id="gameName" (change)="gameSelected($event)">
+        <option *ngFor="let game of games" [value]="game.id">{{game.name}}</option>
     </select>
-
-    <app-scoreboard></app-scoreboard>
+    <app-scoreboard *ngIf="selectedGame?.scores" [tableData]="selectedGame?.scores"></app-scoreboard>
 
     <app-stats></app-stats>
 </div>

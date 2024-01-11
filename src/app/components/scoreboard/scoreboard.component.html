@@ -11,7 +11,7 @@
             <tr *ngFor="let playerName of players">
                 <td>{{ playerName }}</td>
                 <td *ngFor="let _ of [].constructor(nScores); let i = index">
-                    {{tableData[playerName].score[i]?.join(', ') || '-'}}
+                    {{tableData[playerName]?.score[i]?.join(', ') || '-'}}
                 </td>
             </tr>
         </tbody>

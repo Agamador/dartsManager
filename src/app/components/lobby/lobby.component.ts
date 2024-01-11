@@ -49,6 +49,11 @@ export class LobbyComponent {
     this.socket.onEvent('gameStarted', (data: any) => {
       this.router.navigate(['/game'], { state: { data } });
     });
+
+    this.socket.onEvent('userLeft', (data: any) => {
+      console.log(data);
+      if (data.scores) this.players = Object.keys(data.scores);
+    });
   }
 
   startGame() {
@@ -75,7 +80,6 @@ export class LobbyComponent {
       room: this.roomId,
       userName: playerName,
     });
-    this.players = this.players.filter((player) => player !== playerName);
   }
 
   generateId() {

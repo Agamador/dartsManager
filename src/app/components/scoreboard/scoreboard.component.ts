@@ -9,7 +9,15 @@ export class ScoreboardComponent {
   @Input() isTall = false;
   @Input() tableData: any = null;
 
+  nScores: number = 0;
+  players: string[] = [];
   ngOnInit() {
-    console.log(this.tableData);
+    this.nScores = Math.max(
+      ...Object.keys(this.tableData).map((playerName: any) => {
+        console.log(playerName);
+        return this.tableData[playerName].score.length;
+      })
+    );
+    this.players = Object.keys(this.tableData);
   }
 }

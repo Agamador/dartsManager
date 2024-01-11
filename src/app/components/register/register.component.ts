@@ -23,7 +23,7 @@ export class RegisterComponent {
       surname: ['', [Validators.required, Validators.pattern(/[a-zA-Z]+/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      repeatPassword: ['', Validators.required],
+      repeatPassword: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 

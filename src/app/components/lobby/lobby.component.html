@@ -14,7 +14,8 @@
 
     <div class="players">
         <h2>Jugadores</h2>
-        <app-players-table-row class="table" [players]="players" (openEvent)="showModal = true"></app-players-table-row>
+        <app-players-table-row class="table" [players]="players" (openEvent)="showModal = true"
+            (removePlayer)="removePlayer($event)"></app-players-table-row>
 
     </div>
     <button (click)="startGame()">Comenzar partida</button>

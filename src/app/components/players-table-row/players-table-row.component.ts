@@ -12,6 +12,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             *ngIf="player"
             src="/assets/svg/delete.svg"
             alt="Eliminar jugador"
+            (click)="deletePlayer(player)"
           />
         </td>
       </tr>
@@ -31,6 +32,7 @@ export class PlayersTableRowComponent {
   @Input() players!: any[];
   @Input() i!: number;
   @Output() openEvent = new EventEmitter<boolean>();
+  @Output() removePlayer = new EventEmitter<string>();
 
   ngOnChanges() {
     while (this.players.length < 8) {
@@ -40,5 +42,9 @@ export class PlayersTableRowComponent {
 
   emitShowModalEvent() {
     this.openEvent.emit(true);
+  }
+  deletePlayer(player: string | undefined) {
+    //this.players = this.players.filter((p) => p !== player);
+    this.removePlayer.emit(player);
   }
 }

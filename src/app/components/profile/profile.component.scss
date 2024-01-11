@@ -1,5 +1,7 @@
 @import "styles";
-body {
+
+:host {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

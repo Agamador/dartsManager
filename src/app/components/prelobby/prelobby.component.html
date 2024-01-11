@@ -1,22 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DartsManager Home</title>
-</head>
-
-<body>
-    <div class="container">
-        <img src="assets/img/Diana.png" alt="DartsManager Logo" class="logo">
-        <h1>DartsManager</h1>
-        <h3>Código sala: {{roomCode}}</h3>
-        <button (click)="joinRoom()">Jugar</button>
-        <button>Espectar partida</button>
-    </div>
-    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'prelobby'"
-        [useMail]="true"></app-login>
-</body>
-
-</html>
+<div class="container">
+    <img src="assets/img/Diana.png" alt="DartsManager Logo" class="logo">
+    <h1>DartsManager</h1>
+    <h3>Código sala: {{roomCode}}</h3>
+    <button (click)="joinRoom()">Jugar</button>
+    <button>Espectar partida</button>
+</div>
+<app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'prelobby'"
+    [useMail]="true"></app-login>

@@ -1,37 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DartsManager Home</title>
-</head>
-
-<body>
-    <div class="container">
-        <div class="header">
-            <button class="clean-button" (click)="getOut()"><img class="dart-icon" src="/assets/svg/dart.svg"
-                    alt="return"></button>
-            <h2>Código sala: {{roomId}}</h2>
-            <button class="clean-button" [cdkCopyToClipboard]=shareUrl (click)="copiedTimer()"><img
-                    src="/assets/svg/share.svg" alt="Compartir partida"></button>
-        </div>
-        <span *ngIf="copied">Link copiado al portapapeles</span>
-        <select name="gameSelector" id="gameName">
-            <option value="301">301</option>
-            <option value="501">501</option>
-        </select>
-
-        <div class="players">
-            <h2>Jugadores</h2>
-            <app-players-table-row class="table" [players]="players"
-                (openEvent)="showModal = true"></app-players-table-row>
-
-        </div>
-        <button (click)="startGame()">Comenzar partida</button>
+<div class="container">
+    <div class="header">
+        <button class="clean-button" (click)="getOut()"><img class="dart-icon" src="/assets/svg/dart.svg"
+                alt="return"></button>
+        <h2>Código sala: {{roomId}}</h2>
+        <button class="clean-button" [cdkCopyToClipboard]=shareUrl (click)="copiedTimer()"><img
+                src="/assets/svg/share.svg" alt="Compartir partida"></button>
     </div>
-    <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'lobby'"
-        (addPlayerEvent)="addPlayer($event)"></app-login>
-</body>
+    <span *ngIf="copied">Link copiado al portapapeles</span>
+    <select name="gameSelector" id="gameName">
+        <option value="301">301</option>
+        <option value="501">501</option>
+    </select>
 
-</html>
+    <div class="players">
+        <h2>Jugadores</h2>
+        <app-players-table-row class="table" [players]="players" (openEvent)="showModal = true"></app-players-table-row>
+
+    </div>
+    <button (click)="startGame()">Comenzar partida</button>
+</div>
+<app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'lobby'"
+    (addPlayerEvent)="addPlayer($event)"></app-login>

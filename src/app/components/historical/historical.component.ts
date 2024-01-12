@@ -9,10 +9,11 @@ import { Component } from '@angular/core';
 export class HistoricalComponent {
   games: any[] = [];
   selectedGame: any = null;
-
+  userId: any = null;
   constructor(private http: HttpClient) {}
   ngOnInit() {
     const userToken = sessionStorage.getItem('token');
+    this.userId = sessionStorage.getItem('userId');
     const apiUrl = 'http://localhost:3000/api/games/usergames';
 
     if (userToken) {

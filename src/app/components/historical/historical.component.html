@@ -15,5 +15,5 @@
     </select>
     <app-scoreboard *ngIf="selectedGame?.scores" [tableData]="selectedGame?.scores"></app-scoreboard>
 
-    <app-stats></app-stats>
+    <app-stats [gameData]="selectedGame?.scores" [userId]="userId"></app-stats>
 </div>

@@ -10,8 +10,8 @@
         <div class="stat">
             <img src="/assets/svg/badge.svg" alt="Puntuación más repetida">
             <!-- bloque no repitió ninguna -->
-            <p *ngIf="repeatedPlayIndex != null">Ronda {{repeatedPlayIndex+1}}</p>
-            <p *ngIf="repeatedPlay">{{repeatedPlay}}</p>
+            <p class="smallP" *ngIf="repeatedPlayIndex != null">Ronda {{repeatedPlayIndex+1}}</p>
+            <p class="smallP" *ngIf="repeatedPlay">{{repeatedPlay}}</p>
 
         </div>
         <div class="stat">
@@ -34,7 +34,6 @@
         <div class="stat">
             <img src="/assets/svg/close.svg" alt="Número de fallos">
             <p *ngIf="numberOfMisses != null">{{numberOfMisses}}</p>
-
         </div>
     </div>
 </div>

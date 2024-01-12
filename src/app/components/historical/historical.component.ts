@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historical',
@@ -10,7 +11,11 @@ export class HistoricalComponent {
   games: any[] = [];
   selectedGame: any = null;
   userId: any = null;
-  constructor(private http: HttpClient) {}
+  roomCode: any = null;
+  isButtonDisabled: boolean = true;
+
+  constructor(private http: HttpClient, private router: Router) {}
+
   ngOnInit() {
     const userToken = sessionStorage.getItem('token');
     this.userId = sessionStorage.getItem('userId');
@@ -33,6 +38,14 @@ export class HistoricalComponent {
           error: (e) => {},
         });
     }
+  }
+
+  onInputChange() {
+    this.isButtonDisabled = !/^[a-zA-Z]{5}$/.test(this.roomCode);
+  }
+  joinRoom() {
+    sessionStorage.setItem('roomId', this.roomCode);
+    this.router.navigate(['/lobby']);
   }
 
   gameSelected(event: any) {

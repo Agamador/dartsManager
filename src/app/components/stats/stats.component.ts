@@ -92,7 +92,6 @@ export class StatsComponent {
     for (let key in counts) {
       if (counts[key] >= maxCount) {
         maxCount = counts[key];
-        console.log(counts);
         this.repeatedSection = key;
       }
     }
@@ -139,7 +138,6 @@ export class StatsComponent {
 
     this.worstStreak.start = longestStreakStart;
     this.worstStreak.end = longestStreakEnd;
-    console.log(this.worstStreak);
   }
 
   updateNumberOfMisses() {

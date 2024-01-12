@@ -7,8 +7,9 @@
     </div>
 
     <div class="section">
-        <input type="text" placeholder="Código de la sala">
-        <button class="small-button"> Unirse</button>
+        <input type="text" id="roomCode" placeholder="Código de la sala" [(ngModel)]="roomCode"
+            (input)="onInputChange()">
+        <button class="small-button" (click)="joinRoom()" [disabled]="isButtonDisabled">Unirse</button>
     </div>
     <select name="gameSelector" id="gameName" (change)="gameSelected($event)">
         <option *ngFor="let game of games" [value]="game.id">{{game.name}}</option>

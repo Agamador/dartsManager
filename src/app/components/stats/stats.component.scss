@@ -28,6 +28,11 @@
     background: center/60% no-repeat url("/assets/svg/Pluma_dardo.svg");
 }
 
+.smallP {
+    font-size: 0.8rem;
+    height: 0.8rem;
+}
+
 @media (min-width: 400px) {
     .stat {
         height: 110px;

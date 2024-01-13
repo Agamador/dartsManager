@@ -9,7 +9,7 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let playerName of players">
+            <tr *ngFor="let playerName of players" [ngClass]="{'active': playerName == winner}">
                 <td>{{ playerName }}</td>
                 <td *ngIf="inGame">{{tableData[playerName]?.totalScore}}</td>
                 <td *ngFor="let _ of [].constructor(nScores); let i = index">

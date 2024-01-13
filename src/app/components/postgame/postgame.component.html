@@ -1,7 +1,7 @@
 <div class="container">
-    <h1 class="winner">Ganador: Jugador 2</h1>
-    <app-scoreboard [isTall]="true" [tableData]="tableData" style="margin: auto 0;"></app-scoreboard>
-    <button>Volver a jugar</button>
-    <button>Partida Nueva</button>
-    <button [routerLink]="['/home']">Ver mi historial</button>
+    <h1 class="winner">Ganador: {{winner}}</h1>
+    <app-scoreboard *ngIf="scores" [isTall]="true" [tableData]="scores" [winner]="winner"
+        style="margin: auto 0;"></app-scoreboard>
+    <button [routerLink]="['/lobby']">Volver a jugar</button>
+    <button [disabled]="userId == null" [routerLink]="['/history']">Ver mi historial</button>
 </div>

@@ -10,6 +10,7 @@ export class ScoreboardComponent {
   @Input() tableData: any = null;
   @Input() updateEvent: any = null;
   @Input() inGame: boolean = false;
+  @Input() winner: string = '';
   nScores: number = 0;
   players: string[] = [];
 

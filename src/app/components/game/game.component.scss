@@ -29,29 +29,39 @@ img {
 .dart-icon {
     transform: rotate(225deg);
 }
+
 .turn {
-    margin-top: 10px;
+    margin: 10px 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-around;
+    background-color: $primary-color;
+    color: $primary-color-light;
+    font-size: 1.1em;
+    border-radius: 10px;
+    padding: 10px;
 }
+
 .target {
-    width: 100%;
+    width: 80%;
     height: auto;
-    margin: 0;
+    margin: 20px 0px;
 }
+
 .buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
-
+    align-items: center;
+    padding: 8px 0 20px 0;
     button {
         min-width: 30%;
         padding: 5px;
+        margin: 0;
     }
     .icon-button {
         min-width: 15%;
@@ -59,4 +69,23 @@ img {
     img {
         height: 1.2em;
     }
+}
+.clean-button {
+    background-color: $primary-color-light;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+ng-select {
+    width: 50%;
+    padding: 0 !important;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+    height: 50px;
 }

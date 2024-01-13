@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>Jugador</th>
+                <th *ngIf="inGame">Puntuación</th>
                 <th *ngFor="let _ of [].constructor(nScores); let i = index">Ronda {{i+1}}</th>
             </tr>
         </thead>
@@ -10,6 +11,7 @@
         <tbody>
             <tr *ngFor="let playerName of players">
                 <td>{{ playerName }}</td>
+                <td *ngIf="inGame">{{tableData[playerName]?.totalScore}}</td>
                 <td *ngFor="let _ of [].constructor(nScores); let i = index">
                     {{tableData[playerName]?.score[i]?.join(', ') || '-'}}
                 </td>

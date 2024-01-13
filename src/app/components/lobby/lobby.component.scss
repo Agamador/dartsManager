@@ -45,14 +45,6 @@ img {
     box-shadow: none;
     cursor: pointer;
 }
-button:disabled,
-button[disabled] {
-    border: 0;
-    background-color: transparent;
-    color: #666666;
-    img {
-        filter: invert(39%) sepia(0%) saturate(0%) hue-rotate(11deg) brightness(99%) contrast(86%);
-    }
-}
+
 @media (min-width: 768px) {
 }

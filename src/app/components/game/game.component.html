@@ -1,19 +1,28 @@
 <div class="container">
     <div class="header">
-        <img [routerLink]="['/history']" class="dart-icon" src="/assets/svg/dart.svg" alt="return">
-        <h2>Código sala: XXX</h2>
-        <img src="/assets/svg/share.svg" alt="Compartir partida">
+        <button class="clean-button" (click)="getOut()"><img class="dart-icon" src="/assets/svg/dart.svg"
+                alt="return"></button>
+        <h2>Código sala: {{roomId}}</h2>
+        <button class="clean-button" [cdkCopyToClipboard]=shareUrl (click)="copiedTimer()"><img
+                src="/assets/svg/share.svg" alt="Compartir partida"></button>
     </div>
-    <div class="turn">
-        <span class="player-name">Jugador 1</span>
-        <span class="score">Puntos: 103</span>
-    </div>
+    <span *ngIf="copied">Link copiado al portapapeles</span>
+
     <img class="target" src="assets/img/dianaMarcas.png" alt="DartsManager Logo">
-    <span class="last-note">Ultima anotación: 100</span>
-    <div class="buttons">
-        <button class="icon-button"><img src="/assets/svg/undo.svg" alt=""></button>
-        <button>Fallo</button>
-        <button class="icon-button" (click)="addScore('T20')"><img src="/assets/svg/done.svg" alt=""></button>
+
+    <div class="turn">
+        <span class="player-name">Jugador <br><b>{{actualPlayer}}</b></span>
+        <span class="score">Puntos <br><b>{{roomStatus[actualPlayer].totalScore}}</b></span>
+        <span class="last-note">Anotación <br><b>{{actualScore.join(',') || '&#8205;' }}</b></span>
+
     </div>
-    <app-scoreboard></app-scoreboard>
+    <div class="buttons">
+        <button class="icon-button" [disabled]="actualScore.length <= 0" (click)="removeScore()"><img
+                src="/assets/svg/undo.svg" alt=""></button>
+        <ng-select [items]="plays" [(ngModel)]="selectedPlay" [searchable]="true" [placeholder]="'Puntuación'"
+            (ngModelChange)="addScore($event)"></ng-select>
+        <button class="icon-button" (click)="submitScore()" [disabled]="actualScore.length < 3"><img
+                src="/assets/svg/done.svg" alt=""></button>
+    </div>
+    <app-scoreboard [tableData]="roomStatus" [inGame]="true"></app-scoreboard>
 </div>

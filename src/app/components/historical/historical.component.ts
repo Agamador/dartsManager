@@ -44,7 +44,7 @@ export class HistoricalComponent {
     this.isButtonDisabled = !/^[a-zA-Z]{5}$/.test(this.roomCode);
   }
   joinRoom() {
-    sessionStorage.setItem('roomId', this.roomCode);
+    sessionStorage.setItem('roomId', this.roomCode.toLowerCase());
     this.router.navigate(['/lobby']);
   }
 

@@ -7,7 +7,8 @@
                 src="/assets/svg/share.svg" alt="Compartir partida"></button>
     </div>
     <span *ngIf="copied">Link copiado al portapapeles</span>
-    <select name="gameSelector" id="gameName">
+    <select name="gameSelector" id="gameName" [(ngModel)]="gamemode">
+        <option value="" disabled selected>Seleccione modo de juego</option>
         <option value="301">301</option>
         <option value="501">501</option>
     </select>
@@ -18,7 +19,7 @@
             (removePlayer)="removePlayer($event)"></app-players-table-row>
 
     </div>
-    <button (click)="startGame()">Comenzar partida</button>
+    <button [disabled]="gamemode == ''" (click)="startGame()">Comenzar partida</button>
 </div>
 <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'lobby'"
     (addPlayerEvent)="addPlayer($event)"></app-login>

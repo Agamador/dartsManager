@@ -9,9 +9,10 @@ export class ScoreboardComponent {
   @Input() isTall = false;
   @Input() tableData: any = null;
   @Input() updateEvent: any = null;
-
+  @Input() inGame: boolean = false;
   nScores: number = 0;
   players: string[] = [];
+
   ngOnInit() {
     this.updateTable();
   }

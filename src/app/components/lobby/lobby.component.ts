@@ -16,6 +16,7 @@ export class LobbyComponent {
   guestMode: boolean = false;
   backRoute: string = this.guestMode ? '/history' : '/home';
   players: string[] = [];
+  gamemode: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -57,7 +58,10 @@ export class LobbyComponent {
   }
 
   startGame() {
-    this.socket.emitEvent('startGame', { room: this.roomId });
+    this.socket.emitEvent('startGame', {
+      room: this.roomId,
+      gamemode: this.gamemode,
+    });
   }
 
   addPlayer(player: any) {

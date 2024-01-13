@@ -145,6 +145,7 @@ export class GameComponent {
 
   getOut() {
     let uid = sessionStorage.getItem('userId');
+    sessionStorage.removeItem('roomId');
     uid ? this.router.navigate(['/history']) : this.router.navigate(['/home']);
   }
 

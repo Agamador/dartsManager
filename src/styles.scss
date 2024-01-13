@@ -20,6 +20,13 @@ body {
     height: 100%;
     width: 100%;
     background-color: #abd1c6;
+    display: flex;
+    justify-content: center;
+}
+
+app-root {
+    display: block;
+    width: 100%;
 }
 
 button {
@@ -72,7 +79,7 @@ select {
     border-radius: 5px;
     font-size: 1.2em;
     border: 1px solid #ccc;
-    margin: 30px;
+    margin: 10px;
     cursor: pointer;
 }
 

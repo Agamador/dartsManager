@@ -1,7 +1,6 @@
 @import "styles";
 
 :host {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +8,6 @@
 }
 
 h1 {
-    margin-bottom: 10vh;
     font-size: 2em;
     color: $primary-color;
     font-family: "Rajdhani", sans-serif;
@@ -19,7 +17,7 @@ h1 {
 .container {
     form {
         width: 100%;
-        margin-top: 5vh;
+        margin-top: 8px;
     }
 
     p.form-header {

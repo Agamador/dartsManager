@@ -1,12 +1,13 @@
 {
-  "name": "dart-score",
-  "version": "0.0.0",
+  "name": "darts-manager",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start-pwa": "ng build && npx http-server -p 8080 -c-1 --cors -d false -i false ./dist/dartsManager"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@angular/service-worker": "^15.2.0",
     "@ng-select/ng-select": "^10.0.4",
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.7.2",

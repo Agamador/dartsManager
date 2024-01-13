@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dartScore": {
+    "dartsManager": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/dart-score",
+            "outputPath": "dist/dartsManager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -37,7 +38,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -49,8 +52,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "15mb",
+                  "maximumError": "20mb"
                 }
               ],
               "outputHashing": "all"
@@ -70,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dartScore:build:production"
+              "browserTarget": "dartsManager:build:production"
             },
             "development": {
-              "browserTarget": "dartScore:build:development"
+              "browserTarget": "dartsManager:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dartScore:build"
+            "browserTarget": "dartsManager:build"
           }
         },
         "test": {
@@ -95,7 +98,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"

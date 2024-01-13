@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -21,6 +21,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { StatsComponent } from './components/stats/stats.component';
 import { SocketService } from './services/socket.service';
 import { SpectateComponent } from './components/spectate/spectate.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,12 @@ import { SpectateComponent } from './components/spectate/spectate.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgSelectModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [SocketService],
   bootstrap: [AppComponent],

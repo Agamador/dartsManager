@@ -1,3 +1,4 @@
+import { PathLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GameComponent } from './components/game/game.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [Location, { provide: Location, useClass: PathLocationStrategy }],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

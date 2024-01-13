@@ -7,6 +7,6 @@ import { SocketService } from './services/socket.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'dartScore';
+  title = 'dartsManager';
   constructor(private socketService: SocketService) {}
 }

@@ -103,8 +103,7 @@ export class GameComponent {
     this.numberOfPlayers = Object.keys(this.roomStatus).length;
 
     this.socket.onEvent('scoreSubmitted', (data: any) => {
-      this.turn++;
-      this.turn = this.turn <= this.numberOfPlayers ? this.turn : 1;
+      this.turn = data.turn;
       this.roomStatus = data.scores;
       this.actualPlayer = this.getPlayer(this.turn);
     });

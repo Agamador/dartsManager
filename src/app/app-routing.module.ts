@@ -8,6 +8,7 @@ import { PostgameComponent } from './components/postgame/postgame.component';
 import { PrelobbyComponent } from './components/prelobby/prelobby.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SpectateComponent } from './components/spectate/spectate.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'lobby/:id', component: PrelobbyComponent },
   { path: 'lobby', component: LobbyComponent },
   { path: 'game', component: GameComponent },
+  { path: 'spectate', component: SpectateComponent },
   { path: 'postgame', component: PostgameComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

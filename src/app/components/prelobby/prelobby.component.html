@@ -2,8 +2,8 @@
     <img src="assets/img/Diana.png" alt="DartsManager Logo" class="logo">
     <h1>DartsManager</h1>
     <h3>Código sala: {{roomCode}}</h3>
-    <button (click)="joinRoom()">Jugar</button>
-    <button>Espectar partida</button>
+    <button [disabled]="hasStarted" (click)="joinRoom()">Jugar</button>
+    <button (click)="spectateGame()">Espectar partida</button>
 </div>
 <app-login *ngIf="showModal" [guestMode]="true" (closeEvent)="showModal = false" [phase]="'prelobby'"
     [useMail]="true"></app-login>

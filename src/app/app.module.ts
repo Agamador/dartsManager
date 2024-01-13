@@ -20,6 +20,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { SocketService } from './services/socket.service';
+import { SpectateComponent } from './components/spectate/spectate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { SocketService } from './services/socket.service';
     GameComponent,
     PostgameComponent,
     PlayersTableRowComponent,
+    SpectateComponent,
   ],
   imports: [
     BrowserModule,

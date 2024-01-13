@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="header">
+        <h2>Código sala: {{roomId}}</h2>
+    </div>
+
+    <img class="target" src="assets/img/dianaMarcas.png" alt="DartsManager Logo">
+    <span *ngIf="roomStatus == null">Esperando a que empiece la partida...</span>
+    <div class="turn">
+        <span class="player-name">Jugador <br><b>{{(actualPlayer != '') ? actualPlayer : '&#8205;'}}</b></span>
+        <span class="score">Puntos <br><b>{{(roomStatus != null) ? roomStatus[actualPlayer]?.totalScore : '&#8205;'}}
+            </b></span>
+    </div>
+    <app-scoreboard *ngIf="roomStatus != null" [tableData]="roomStatus" [inGame]="true"
+        [winner]="actualPlayer"></app-scoreboard>
+
+    <button (click)="leave()">Dejar de espectar</button>
+</div>

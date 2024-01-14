@@ -8,7 +8,7 @@ export class SocketService {
   private socket: Socket;
 
   constructor() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://dartsmanager.agamador.com:3000');
   }
 
   // Método para emitir un evento al servidor

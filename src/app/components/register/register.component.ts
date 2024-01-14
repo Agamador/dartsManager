@@ -30,7 +30,7 @@ export class RegisterComponent {
   onSubmit() {
     if (this.registroForm.valid) {
       const formData = this.registroForm.value;
-      const apiUrl = 'http://localhost:3000/api/users/register';
+      const apiUrl = 'https://dartsmanager.agamador.com:3000/api/users/register';
       const body = JSON.stringify({ user: formData });
       this.http
         .post(apiUrl, body, {

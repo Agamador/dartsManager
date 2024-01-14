@@ -12,7 +12,7 @@ export class PrelobbyComponent {
   showModal: boolean = false;
   roomCode: string = 'XXX';
   hasStarted: boolean = false;
-  apiUrl = 'http://localhost:3000/api/games/started/';
+  apiUrl = 'https://dartsmanager.agamador.com:3000/api/games/started/';
 
   constructor(
     private route: ActivatedRoute,

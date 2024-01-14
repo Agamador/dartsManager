@@ -119,7 +119,7 @@ export class LoginComponent {
     let data: any = {};
     try {
       data = await firstValueFrom<any>(
-        this.http.post('http://localhost:3000/api/users/login', body, {
+        this.http.post('https://dartsmanager.agamador.com:3000/api/users/login', body, {
           headers: { 'Content-Type': 'application/json' },
         })
       );

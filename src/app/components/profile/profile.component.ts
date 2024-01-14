@@ -24,7 +24,7 @@ export class ProfileComponent {
   }
   ngOnInit(): void {
     const userToken = sessionStorage.getItem('token');
-    const apiUrl = 'http://localhost:3000/api/users/profile';
+    const apiUrl = 'https://dartsmanager.agamador.com:3000/api/users/profile';
 
     if (userToken) {
       this.http
@@ -59,7 +59,7 @@ export class ProfileComponent {
 
     if (this.profileForm.valid) {
       const formData = this.profileForm.value;
-      const apiUrl = 'http://localhost:3000/api/users/edit';
+      const apiUrl = 'https://dartsmanager.agamador.com:3000/api/users/edit';
       const body = JSON.stringify({ newData: formData });
       this.http
         .post(apiUrl, body, {

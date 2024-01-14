@@ -37,4 +37,8 @@
     .stat {
         height: 110px;
     }
+    .stat:nth-child(odd){
+    background: center/60% no-repeat url("/assets/svg/Pluma_dardo90.svg");
+
+    }
 }

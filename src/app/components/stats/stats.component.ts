@@ -14,7 +14,7 @@ export class StatsComponent {
   repeatedPlay: any = null;
   repeatedSection: any = null;
   worstPlay: any = null;
-  worstStreak: any = {};
+  worstStreak: any = null;
   numberOfMisses: any = null;
   bestPlayIndex: any = null;
   repeatedPlayIndex: any = null;

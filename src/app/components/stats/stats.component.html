@@ -3,37 +3,53 @@
     <h2 class="player-name">{{playerName}}</h2>
     <div class="grid">
         <div class="stat">
-            <img src="/assets/svg/trophy.svg" alt="Mejor jugada">
-            <p *ngIf="bestPlayIndex">Ronda {{bestPlayIndex+1}}</p>
-            <p *ngIf="bestPlay">{{bestPlay}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Mejor jugada" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/trophy.svg" alt="Mejor jugada">
+                <p *ngIf="bestPlayIndex">Ronda {{bestPlayIndex+1}}</p>
+                <p *ngIf="bestPlay">{{bestPlay}}</p>
+            </div>
         </div>
         <div class="stat">
-            <img src="/assets/svg/badge.svg" alt="Puntuación más repetida">
-            <!-- bloque no repitió ninguna -->
-            <p class="smallP" *ngIf="repeatedPlayIndex != null">Ronda {{repeatedPlayIndex+1}}</p>
-            <p class="smallP" *ngIf="repeatedPlay">{{repeatedPlay}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Puntuación más repetida" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/badge.svg" alt="Puntuación más repetida">
+                <p *ngIf="repeatedPlay">{{repeatedPlay}}</p>
 
+            </div>
         </div>
         <div class="stat">
-            <img src="/assets/svg/crosshair.svg" alt="Sección más repetida">
-            <p *ngIf="repeatedSection">Sección</p>
-            <p *ngIf="repeatedSection">{{repeatedSection}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Sección más repetida" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/crosshair.svg" alt="Sección más repetida">
+                <p *ngIf="repeatedSection">Sección</p>
+                <p *ngIf="repeatedSection">{{repeatedSection}}</p>
 
+            </div>
         </div>
         <div class="stat">
-            <img src="/assets/svg/dissatissfied.svg" alt="Peor jugada">
-            <p *ngIf="worstPlayIndex != null">Ronda {{worstPlayIndex+1}}</p>
-            <p *ngIf="worstPlay">{{worstPlay}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Peor jugada" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/dissatissfied.svg" alt="Peor jugada">
+                <p *ngIf="worstPlayIndex != null">Ronda {{worstPlayIndex+1}}</p>
+                <p *ngIf="worstPlay">{{worstPlay}}</p>
 
+            </div>
         </div>
         <div class="stat">
-            <img src="/assets/svg/thumb_down.svg" alt="Peor racha">
-            <p *ngIf="worstStreak">Rondas</p>
-            <p *ngIf="worstStreak">{{worstStreak.start + 1}} a {{worstStreak.end + 1}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Peor racha" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/thumb_down.svg" alt="Peor racha">
+                <p *ngIf="worstStreak != null">Rondas</p>
+                <p *ngIf="worstStreak != null">{{worstStreak?.start + 1}} a {{worstStreak?.end + 1}}</p>
+            </div>
         </div>
         <div class="stat">
-            <img src="/assets/svg/close.svg" alt="Número de fallos">
-            <p *ngIf="numberOfMisses != null">{{numberOfMisses}}</p>
+            <img src="/assets/svg/Pluma_dardo.svg" title="Número de fallos" alt="background" class="back">
+            <div class="rows">
+                <img src="/assets/svg/close.svg" alt="Número de fallos">
+                <p *ngIf="numberOfMisses != null">{{numberOfMisses}}</p>
+            </div>
         </div>
     </div>
 </div>

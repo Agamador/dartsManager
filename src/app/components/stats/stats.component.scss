@@ -11,13 +11,25 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 30px;
-    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
 }
 
 .stat {
+    position: relative;
+    text-align: center;
+    padding: 10px 0 20px;
+}
+.back {
+    position: absolute;
+    height: 115%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rows {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -25,20 +37,17 @@
     height: 80px;
     align-items: center;
     justify-content: center;
-    background: center/60% no-repeat url("/assets/svg/Pluma_dardo.svg");
 }
 
-.smallP {
-    font-size: 0.8rem;
-    height: 0.8rem;
-}
-
-@media (min-width: 400px) {
+@media (min-width: 768px) {
     .stat {
         height: 110px;
+        padding: 10px;
+        background-size: 60%;
     }
-    .stat:nth-child(odd){
-    background: center/60% no-repeat url("/assets/svg/Pluma_dardo90.svg");
-
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 20px;
     }
 }

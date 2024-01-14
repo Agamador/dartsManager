@@ -135,7 +135,7 @@ export class StatsComponent {
         longestStreakEnd = currentStreakEnd;
       }
     }
-
+    this.worstStreak = {};
     this.worstStreak.start = longestStreakStart;
     this.worstStreak.end = longestStreakEnd;
   }

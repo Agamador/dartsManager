@@ -19,7 +19,7 @@ export class HistoricalComponent {
   ngOnInit() {
     const userToken = sessionStorage.getItem('token');
     this.userId = sessionStorage.getItem('userId');
-    const apiUrl = 'https://dartsmanager.agamador.com:3000/api/games/usergames';
+    const apiUrl = 'http://localhost:3000/api/games/usergames';
 
     if (userToken) {
       this.http
@@ -55,7 +55,7 @@ export class HistoricalComponent {
 
   getGameScore(gameId: string) {
     const userToken = sessionStorage.getItem('token');
-    const apiUrl = 'https://dartsmanager.agamador.com:3000/api/games/' + gameId;
+    const apiUrl = 'http://localhost:3000/api/games/' + gameId;
 
     if (userToken) {
       this.http

@@ -9,7 +9,7 @@ import { SocketService } from 'src/app/services/socket.service';
 export class LobbyComponent {
   showModal: boolean = false;
   roomId: string | null = null;
-  shareUrl: string = 'http://localhost:4200/lobby/';
+  shareUrl: string = 'https://dartsmanager.agamador.com:8080/lobby/';
   copied: boolean = false;
   userId: string | null = null;
   userName: string | null = null;

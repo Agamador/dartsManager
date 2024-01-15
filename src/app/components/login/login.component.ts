@@ -119,11 +119,14 @@ export class LoginComponent {
     let data: any = {};
     try {
       data = await firstValueFrom<any>(
-        this.http.post('https://dartsmanager.agamador.com:3000/api/users/login', body, {
-          headers: { 'Content-Type': 'application/json' },
-        })
+        this.http.post(
+          'https://dartsmanager.agamador.com:3000/api/users/login',
+          body,
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
       );
-      console.log(data);
     } catch (e: any) {
       if (e.error.message == 'Invalid credentials') {
         this.showError = true;

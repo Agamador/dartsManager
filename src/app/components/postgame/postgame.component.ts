@@ -12,13 +12,9 @@ export class PostgameComponent {
     this.scores = navigation?.extras.state!['data'].scores;
     this.winner = navigation?.extras.state!['data'].winner;
     this.userId = sessionStorage.getItem('userId');
-    console.log(this.userId);
   }
 
   scores: any;
   winner: any;
   userId: any = null;
-  ngOnInit(): void {
-    console.log(this.userId);
-  }
 }

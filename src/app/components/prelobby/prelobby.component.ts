@@ -26,7 +26,6 @@ export class PrelobbyComponent {
       sessionStorage.setItem('roomId', this.roomCode);
       await this.http.get(this.apiUrl + this.roomCode).subscribe({
         next: (data: any) => {
-          console.log(data);
           this.hasStarted = data.started;
         },
       });
@@ -37,7 +36,6 @@ export class PrelobbyComponent {
     sessionStorage.setItem('roomId', this.roomCode);
     this.http.get(this.apiUrl + this.roomCode).subscribe({
       next: (data: any) => {
-        console.log(data);
         this.hasStarted = data.started;
         if (!this.hasStarted) {
           if (sessionStorage.getItem('token')) {

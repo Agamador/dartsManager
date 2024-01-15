@@ -52,7 +52,6 @@ export class LobbyComponent {
     });
 
     this.socket.onEvent('userLeft', (data: any) => {
-      console.log(data);
       if (data.scores) this.players = Object.keys(data.scores);
     });
   }
